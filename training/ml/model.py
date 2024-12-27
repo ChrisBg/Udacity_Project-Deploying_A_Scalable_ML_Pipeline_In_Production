@@ -1,5 +1,6 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
-
+from sklearn.ensemble import HistGradientBoostingClassifier
+from sklearn.model_selection import RandomizedSearchCV
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
@@ -17,8 +18,38 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
+    # Initialize the model
+    model = HistGradientBoostingClassifier()
 
-    pass
+    # Define parameter distributions
+    param_distributions = {
+        'learning_rate': [0.01, 0.05, 0.1, 0.2],
+        'max_depth': [None, 3, 5, 10],
+        'min_samples_leaf': [10, 20, 30],
+        'max_iter': [100, 200, 300],
+        'l2_regularization': [0.0, 1.0, 10.0],
+    }
+
+    # Initialize RandomizedSearchCV
+    random_search = RandomizedSearchCV(
+        estimator=model,
+        param_distributions=param_distributions,
+        n_iter=20,
+        scoring='accuracy',
+        n_jobs=-1,
+        cv=5,
+        verbose=2,
+        random_state=42
+    )
+
+    # Fit the model
+    random_search.fit(X_train, y_train) 
+
+    # Output best parameters and evaluate
+    print("Best Hyperparameters:", random_search.best_params_)
+    
+    best_model = random_search.best_estimator_
+    return best_model
 
 
 def compute_model_metrics(y, preds):
@@ -57,4 +88,5 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    pass
+    preds = model.predict(X)
+    return preds
