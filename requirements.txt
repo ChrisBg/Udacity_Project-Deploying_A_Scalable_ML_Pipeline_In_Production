@@ -10,4 +10,3 @@ jupyter
 notebook==7.3.2
 ipywidgets
 ipykernel
-ydata-profiling==4.12.1
