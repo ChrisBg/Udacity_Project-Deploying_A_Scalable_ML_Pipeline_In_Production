@@ -34,14 +34,18 @@ def train_model(X_train, y_train):
         'min_samples_leaf': [10, 20, 30],
         'max_iter': [100, 200, 300],
         'l2_regularization': [0.0, 1.0, 10.0],
-    }
+        'max_features': [0.5, 0.75, 1.0],
+        'early_stopping': [True, False],
+        'validation_fraction': [0.1, 0.2, 0.3],
+        'n_iter_no_change': [10, 20, 30],
+          }
 
     # Initialize RandomizedSearchCV
     logger.info("Initializing RandomizedSearchCV")
     random_search = RandomizedSearchCV(
         estimator=model,
         param_distributions=param_distributions,
-        n_iter=1,
+        n_iter=100,
         scoring='f1',
         n_jobs=-1,
         cv=5,
