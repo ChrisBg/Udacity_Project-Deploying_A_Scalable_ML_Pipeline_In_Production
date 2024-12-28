@@ -1,11 +1,15 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.model_selection import RandomizedSearchCV
+import logging  
+
+logger = logging.getLogger(__name__)
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
     """
-    Trains a machine learning model and returns it.
+    Trains a machine learning model from a randomizedSearchCV and returns the best model.
+    
 
     Inputs
     ------
@@ -19,9 +23,11 @@ def train_model(X_train, y_train):
         Trained machine learning model.
     """
     # Initialize the model
+    logger.info("Initializing model")
     model = HistGradientBoostingClassifier()
 
     # Define parameter distributions
+    logger.info("Defining parameter distributions")
     param_distributions = {
         'learning_rate': [0.01, 0.05, 0.1, 0.2],
         'max_depth': [None, 3, 5, 10],
@@ -31,11 +37,12 @@ def train_model(X_train, y_train):
     }
 
     # Initialize RandomizedSearchCV
+    logger.info("Initializing RandomizedSearchCV")
     random_search = RandomizedSearchCV(
         estimator=model,
         param_distributions=param_distributions,
-        n_iter=20,
-        scoring='accuracy',
+        n_iter=1,
+        scoring='f1',
         n_jobs=-1,
         cv=5,
         verbose=2,
@@ -43,12 +50,17 @@ def train_model(X_train, y_train):
     )
 
     # Fit the model
+    logger.info("Fitting model")
     random_search.fit(X_train, y_train) 
 
     # Output best parameters and evaluate
-    print("Best Hyperparameters:", random_search.best_params_)
+    logger.info("Outputting best parameters and evaluating")
+    logger.info("Best Hyperparameters: %s", random_search.best_params_)
     
+    # Keep the best model
+    logger.info("Keeping the best model")
     best_model = random_search.best_estimator_
+
     return best_model
 
 
