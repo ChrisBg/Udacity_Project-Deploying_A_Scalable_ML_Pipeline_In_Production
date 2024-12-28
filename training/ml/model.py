@@ -1,3 +1,10 @@
+"""
+This script is used to train the model.
+Author : Christophe Bourgoin
+Date : 2024-12-28
+"""
+
+# Importing libraries
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.model_selection import RandomizedSearchCV
@@ -5,7 +12,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# Optional: implement hyperparameter tuning.
+# Training a model histgradientboosting based on hyper-parameters tuning with RandomizedSearchCV
 def train_model(X_train, y_train):
     """
     Trains a machine learning model from a randomizedSearchCV and returns the best model.
@@ -68,6 +75,7 @@ def train_model(X_train, y_train):
     return best_model
 
 
+# Computing model metrics : precision, recall, fbeta
 def compute_model_metrics(y, preds):
     """
     Validates the trained machine learning model using precision, recall, and F1.
@@ -90,6 +98,7 @@ def compute_model_metrics(y, preds):
     return precision, recall, fbeta
 
 
+# Inference function
 def inference(model, X):
     """ Run model inferences and return the predictions.
 

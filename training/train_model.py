@@ -54,11 +54,11 @@ def main():
     model_path = 'model/model.joblib'
     encoder_path = 'model/encoder.joblib'
     lb_path = 'model/lb.joblib'
-    X_test_path = 'model/X_test.joblib'
-    y_test_path = 'model/y_test.joblib'
-    precision_path = 'model/precision.joblib'
-    recall_path = 'model/recall.joblib'
-    fbeta_path = 'model/fbeta.joblib'
+    #X_test_path = 'model/X_test.joblib'
+    #y_test_path = 'model/y_test.joblib'
+    #precision_path = 'model/precision.joblib'
+    #recall_path = 'model/recall.joblib'
+    #fbeta_path = 'model/fbeta.joblib'
 
     if os.path.exists(model_path) and os.path.isfile(model_path):
         logger.info("Model already exists, skipping training, loading model")
@@ -82,9 +82,9 @@ def main():
         joblib.dump(lb, lb_path)
 
     # Save the test data
-    logger.info("Saving test data")
-    joblib.dump(X_test, X_test_path)
-    joblib.dump(y_test, y_test_path)
+    #logger.info("Saving test data")
+    #joblib.dump(X_test, X_test_path)
+    #joblib.dump(y_test, y_test_path)
 
     # Evaluate the model
     logger.info("Evaluating model")
@@ -93,10 +93,10 @@ def main():
     logger.info("Precision: %s, Recall: %s, Fbeta: %s", precision, recall, fbeta)
 
     # Save the metrics
-    logger.info("Saving metrics")
-    joblib.dump(precision, precision_path)
-    joblib.dump(recall, recall_path)
-    joblib.dump(fbeta, fbeta_path)
+    #logger.info("Saving metrics")
+    #joblib.dump(precision, precision_path)
+    #joblib.dump(recall, recall_path)
+    #joblib.dump(fbeta, fbeta_path)
 
 if __name__ == "__main__":
     main()
