@@ -43,7 +43,7 @@ def save_model_card_as_markdown(model_card, markdown_file_path):
 
 ## Training Details
 - **Algorithm:** {model_card['training_details']['algorithm']}
-- **Hyperparameters:** {model_card['training_details']['hyperparameters']}
+- **Hyperparameters:** {json.dumps(model_card['training_details']['hyperparameters'], indent=4)}
 - **Validation Strategy:** {model_card['training_details']['validation_strategy']}
 - **Hyperparameter Tuning:** {model_card['training_details']['hyperparameter_tuning']}
 - **Slice Analysis:** {model_card['training_details']['slice_analysis']}
