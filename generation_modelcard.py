@@ -16,10 +16,6 @@ def save_model_card_as_markdown(model_card, markdown_file_path):
     # Generate Limitations and Ethical Considerations as bullet points
     limitations = "\n".join(f"- {lim}" for lim in model_card["limitations"])
     ethical_considerations = "\n".join(f"- {eth}" for eth in model_card["ethical_considerations"])
-
-    # Format hyperparameters as bullet points
-    hyperparameters = "\n".join([f"  • \"{key}\": {value}," for key, value in model_card['training_details']['hyperparameters'].items()])
-
     
     # Create Markdown content
     markdown_content = f"""
@@ -47,7 +43,16 @@ def save_model_card_as_markdown(model_card, markdown_file_path):
 
 ## Training Details
 - **Algorithm:** {model_card['training_details']['algorithm']}
-- **Hyperparameters:** {hyperparameters}
+- **Hyperparameters:** 
+    - **loss:** {model_card['training_details']['hyperparameters']['loss']}
+    - **learning_rate:** {model_card['training_details']['hyperparameters']['learning_rate']}
+    - **max_iter:** {model_card['training_details']['hyperparameters']['max_iter']}
+    - **max_depth:** {model_card['training_details']['hyperparameters']['max_depth']}
+    - **min_samples_leaf:** {model_card['training_details']['hyperparameters']['min_samples_leaf']}
+    - **max_leaf_nodes:** {model_card['training_details']['hyperparameters']['max_leaf_nodes']}
+    - **max_features:** {model_card['training_details']['hyperparameters']['max_features']}
+    - **l2_regularization:** {model_card['training_details']['hyperparameters']['l2_regularization']}
+    - **max_bins:** {model_card['training_details']['hyperparameters']['max_bins']}
 - **Validation Strategy:** {model_card['training_details']['validation_strategy']}
 - **Hyperparameter Tuning:** {model_card['training_details']['hyperparameter_tuning']}
 - **Slice Analysis:** {model_card['training_details']['slice_analysis']}
