@@ -1,9 +1,15 @@
 # Model Card: Census Income Classifier
+## Author
+Christophe Bourgoin
 
-## Overview
+## Date Created
+2024-12-29
+
+## Model Description
 A classification pipeline using HistGradientBoostingClassifier to predict salary class based on census data
 
-**Date Created:** 2024-12-29
+## Intended Use
+The model is trained to be used for predicting salary class based on census data in the context of a Udacity project for the Machine Learning Engineer DevOps Nanodegree program.
 
 ## Dataset Details
 - **Name:** Census Income Dataset
@@ -14,7 +20,7 @@ A classification pipeline using HistGradientBoostingClassifier to predict salary
 - **Features:** 14 features
 - **Categorical Features:** 9 categorical features
 - **Numerical Features:** 6 numerical features
-- **Preprocessing Steps:** Categorical features encoded using OneHotEncoder, numerical features scaled using StandardScaler.
+- **Preprocessing Steps:** Categorical features encoded using OneHotEncoder, the target feature is encoded using LabelBinarizer.
 
 ## Training Details
 - **Algorithm:** HistGradientBoostingClassifier
@@ -24,16 +30,17 @@ A classification pipeline using HistGradientBoostingClassifier to predict salary
 - **Slice Analysis:** It's possible to evaluate also the model performance on different slices of the data. For example for the following features: education, age, occupation, race, sex, and native-country.
 
 ## Performance
-- **Precision:** 0.7892777364110201
-- **Recall:** 0.6760204081632653
-- **Fbeta:** 0.7282720714531089
+- **Precision:** 0.7893
+- **Recall:** 0.676
+- **Fbeta:** 0.7283
 - **Test Set Performance:** Metrics were evaluated on a hold-out test set of 20% of the data.
 
 ## Limitations
 - Data came from an old census survey, so it's not representative of the actual population
 - The model may not perform well on data distributions that differ significantly from the training set.
 - Some categorical features might be underrepresented in the dataset.
+- The trained model is not a production ready model, it's a proof of concept.
 
 ## Ethical Considerations
-- The dataset contains sensitive information that must be handled securely.
+- The dataset should not be used for any other purpose than the one specified in the intended use.
 - Bias in the dataset could lead to unfair predictions for certain demographic groups.
