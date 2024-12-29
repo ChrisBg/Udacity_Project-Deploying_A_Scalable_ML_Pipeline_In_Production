@@ -5,15 +5,42 @@ Date : 2024-12-28
 """
 
 # Importing libraries
+import warnings
+import sys
+from functools import wraps
+import logging
+
+# Disable all warnings
+warnings.filterwarnings('ignore')
+
+# Silence all warnings programmatically
+def ignore_warnings(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            return func(*args, **kwargs)
+    return wrapper
+
+# Redirect warnings to logging
+logging.captureWarnings(True)
+
+# Suppress specific warning types
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=UserWarning)
+warnings.filterwarnings("ignore", category=RuntimeWarning)
+
+# Rest of your imports
+import numpy as np
+import pandas as pd
+from typing import List, Dict, Any
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.model_selection import RandomizedSearchCV
-import pandas as pd
-import numpy as np
-from sklearn.metrics import fbeta_score, precision_score, recall_score
-from typing import List, Dict, Any
-import logging  
 
+# Configure logging
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Training a model histgradientboosting based on hyper-parameters tuning with RandomizedSearchCV
