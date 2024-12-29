@@ -109,9 +109,9 @@ if __name__ == "__main__":
             "slice_analysis": "It's possible to evaluate also the model performance on different slices of the data. For example for the following features: education, age, occupation, race, sex, and native-country."
         },
         "performance": {
-            "precision": 0.7892777364110201,
-            "recall": 0.6760204081632653,
-            "fbeta": 0.7282720714531089,
+            "precision": 0.7893,
+            "recall": 0.6760,
+            "fbeta": 0.7283,
             "test_set_performance": "Metrics were evaluated on a hold-out test set of 20% of the data."
         },
         "limitations": [
