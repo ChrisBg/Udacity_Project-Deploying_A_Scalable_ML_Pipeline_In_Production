@@ -24,9 +24,6 @@ def main(feature):
     # Define the target variable 
     target = 'salary'
 
-    # First, let's check what columns are actually in your DataFrame    
-    #logger.info(f"Available columns: {data.columns.tolist()}")
-
     # Optional enhancement, use K-fold cross validation instead of a train-test split.
     logger.info("Splitting data")
     train, test = train_test_split(data, test_size=0.20, random_state=42, stratify=data[target])
@@ -65,6 +62,10 @@ def main(feature):
         encoder = joblib.load(encoder_path)
         logger.info("Loading label binarizer")
         lb = joblib.load(lb_path)
+
+        # Get the hyperparameters
+        hyperparameters = model.get_params()
+        logger.info("Hyperparameters: %s", hyperparameters)
     else:
         # Train and save a model.
         logger.info("Training model")
