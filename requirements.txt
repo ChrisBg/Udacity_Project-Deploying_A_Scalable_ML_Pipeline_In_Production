@@ -6,7 +6,5 @@ requests
 fastapi==0.63.0
 uvicorn
 gunicorn
-jupyter
-notebook==7.3.2
-ipywidgets
-ipykernel
+requests==2.31
+jinja2==3.0.3

@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from typing import Literal, List
 import pandas as pd
@@ -8,6 +9,15 @@ from training.ml.model import inference
 
 # Initialize FastAPI app
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 # Load model and encoders
 model = joblib.load("model/model.joblib")
@@ -51,9 +61,12 @@ class InputData(BaseModel):
         }
 
 @app.get("/")
-async def welcome():
-    """Welcome message for the API"""
+async def root():
     return {"message": "Welcome to the income prediction API!"}
+
+@app.get("/docs")  # Explicitly add docs route if needed
+async def get_docs():
+    return app.openapi()
 
 @app.post("/predict")  # Make sure it's exactly "/predict"
 async def predict(data: InputData):
