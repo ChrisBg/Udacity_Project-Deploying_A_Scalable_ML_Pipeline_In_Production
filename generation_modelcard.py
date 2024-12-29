@@ -22,15 +22,11 @@ def save_model_card_as_markdown(model_card, markdown_file_path):
 # Model Card: 
 {model_card['additional_info']}
 
-## Model Details
-### Model Name
-{model_card['model_name']}
-### Author
-{model_card['author']}
-### Date Created
-{model_card['date_created']}
-### Model Description
-{model_card['model_description']}
+## Model Details  
+### Model Name : {model_card['model_name']}
+### Author : {model_card['author']}
+### Date Created : {model_card['date_created']}
+### Model Description : {model_card['model_description']}
 
 ## Intended Use
 {model_card['intended_use']}
