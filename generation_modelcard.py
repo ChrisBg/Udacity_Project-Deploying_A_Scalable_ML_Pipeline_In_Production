@@ -22,7 +22,7 @@ def save_model_card_as_markdown(model_card, markdown_file_path):
 # Model Card: 
 - Author : {model_card['author']}
 - Date Created : {model_card['creation_date']}
-- Additional Information : {model_card['additional_info']}
+{model_card['additional_info']}
 
 ## Model Description
 {model_card['model_description']}

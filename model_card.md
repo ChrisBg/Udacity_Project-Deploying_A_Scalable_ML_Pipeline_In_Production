@@ -1,7 +1,7 @@
 # Model Card: 
 - Author : Christophe Bourgoin
 - Date Created : 2024-12-29
-- Additional Information : For additional information see the Model Card paper: https://arxiv.org/pdf/1810.03993.pdf
+For additional information see the Model Card paper: https://arxiv.org/pdf/1810.03993.pdf
 
 ## Model Description
 A classification pipeline using HistGradientBoostingClassifier to predict salary class based on census data
