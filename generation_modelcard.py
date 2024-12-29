@@ -20,13 +20,12 @@ def save_model_card_as_markdown(model_card, markdown_file_path):
     # Create Markdown content
     markdown_content = f"""
 # Model Card: 
-{model_card['additional_info']}
+- Author : {model_card['author']}
+- Date Created : {model_card['creation_date']}
+- Additional Information : {model_card['additional_info']}
 
-## Model Details  
-### Model Name : {model_card['model_name']}
-### Author : {model_card['author']}
-### Date Created : {model_card['date_created']}
-### Model Description : {model_card['model_description']}
+## Model Description
+{model_card['model_description']}
 
 ## Intended Use
 {model_card['intended_use']}
@@ -76,7 +75,7 @@ if __name__ == "__main__":
         "model_description": "A classification pipeline using HistGradientBoostingClassifier to predict salary class based on census data",
         "intended_use": "The model is trained to be used for predicting salary class based on census data in the context of a Udacity project for the Machine Learning Engineer DevOps Nanodegree program.",
         "author": "Christophe Bourgoin",
-        "date_created": "2024-12-29",
+        "creation_date": "2024-12-29",
         "additional_info": "For additional information see the Model Card paper: https://arxiv.org/pdf/1810.03993.pdf",
         "dataset": {
             "name": "Census Income Dataset",

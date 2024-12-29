@@ -1,11 +1,10 @@
 # Model Card: 
-For additional information see the Model Card paper: https://arxiv.org/pdf/1810.03993.pdf
+- Author : Christophe Bourgoin
+- Date Created : 2024-12-29
+- Additional Information : For additional information see the Model Card paper: https://arxiv.org/pdf/1810.03993.pdf
 
-## Model Details  
-### Model Name : Census Income Classifier
-### Author : Christophe Bourgoin
-### Date Created : 2024-12-29
-### Model Description : A classification pipeline using HistGradientBoostingClassifier to predict salary class based on census data
+## Model Description
+A classification pipeline using HistGradientBoostingClassifier to predict salary class based on census data
 
 ## Intended Use
 The model is trained to be used for predicting salary class based on census data in the context of a Udacity project for the Machine Learning Engineer DevOps Nanodegree program.
