@@ -20,11 +20,17 @@ def save_model_card_as_markdown(model_card, markdown_file_path):
     # Create Markdown content
     markdown_content = f"""
 # Model Card: {model_card['model_name']}
+## Author
+{model_card['author']}
 
-## Overview
+## Date Created
+{model_card['date_created']}
+
+## Model Description
 {model_card['model_description']}
 
-**Date Created:** {model_card['date_created']}
+## Intended Use
+{model_card['intended_use']}
 
 ## Dataset Details
 - **Name:** {model_card['dataset']['name']}
@@ -69,7 +75,10 @@ if __name__ == "__main__":
     model_card = {
         "model_name": "Census Income Classifier",
         "model_description": "A classification pipeline using HistGradientBoostingClassifier to predict salary class based on census data",
+        "intended_use": "The model is trained to be used for predicting salary class based on census data in the context of a Udacity project for the Machine Learning Engineer DevOps Nanodegree program.",
+        "author": "Christophe Bourgoin",
         "date_created": "2024-12-29",
+        "additional_info": "For additional information see the Model Card paper: https://arxiv.org/pdf/1810.03993.pdf",
         "dataset": {
             "name": "Census Income Dataset",
             "source": "https://archive.ics.uci.edu/dataset/20/census+income",
@@ -79,7 +88,7 @@ if __name__ == "__main__":
             "features": "14 features",
             "categorical_features": "9 categorical features",
             "numerical_features": "6 numerical features",
-            "preprocessing_steps": "Categorical features encoded using OneHotEncoder, numerical features scaled using StandardScaler."
+            "preprocessing_steps": "Categorical features encoded using OneHotEncoder, the target feature is encoded using LabelBinarizer."
         },
         "training_details": {
             "algorithm": "HistGradientBoostingClassifier",
@@ -108,10 +117,11 @@ if __name__ == "__main__":
         "limitations": [
             "Data came from an old census survey, so it's not representative of the actual population",
             "The model may not perform well on data distributions that differ significantly from the training set.",
-            "Some categorical features might be underrepresented in the dataset."
+            "Some categorical features might be underrepresented in the dataset.",
+            "The trained model is not a production ready model, it's a proof of concept."
         ],
         "ethical_considerations": [
-            "The dataset contains sensitive information that must be handled securely.",
+            "The dataset should not be used for any other purpose than the one specified in the intended use.",
             "Bias in the dataset could lead to unfair predictions for certain demographic groups."
         ]
     }
