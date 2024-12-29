@@ -19,14 +19,17 @@ def save_model_card_as_markdown(model_card, markdown_file_path):
     
     # Create Markdown content
     markdown_content = f"""
-# Model Card: {model_card['model_name']}
-## Author
+# Model Card: 
+{model_card['additional_info']}
+
+## Model Details
+### Model Name
+{model_card['model_name']}
+### Author
 {model_card['author']}
-
-## Date Created
+### Date Created
 {model_card['date_created']}
-
-## Model Description
+### Model Description
 {model_card['model_description']}
 
 ## Intended Use

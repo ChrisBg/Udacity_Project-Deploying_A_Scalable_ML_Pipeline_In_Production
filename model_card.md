@@ -1,11 +1,14 @@
-# Model Card: Census Income Classifier
-## Author
+# Model Card: 
+For additional information see the Model Card paper: https://arxiv.org/pdf/1810.03993.pdf
+
+## Model Details
+### Model Name
+Census Income Classifier
+### Author
 Christophe Bourgoin
-
-## Date Created
+### Date Created
 2024-12-29
-
-## Model Description
+### Model Description
 A classification pipeline using HistGradientBoostingClassifier to predict salary class based on census data
 
 ## Intended Use
