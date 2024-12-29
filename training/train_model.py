@@ -104,7 +104,7 @@ def main(feature):
     )
 
     logger.info("Slice metrics: %s", slice_metrics)
-    print_slice_metrics(slice_metrics)
+    print_slice_metrics(slice_metrics, output_path='slice_output.txt')
     logger.info("Model evaluation complete")
 
 

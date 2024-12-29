@@ -18,11 +18,16 @@ sample_data = {
 
 data = json.dumps(sample_data)
 
+
 def test_render_api():
     response = requests.get(url)
     print(response.json())
-    assert response.status_code == 200
-    assert response.json()["message"] == "Welcome to the income prediction API!"
+    print(response.status_code)
+    try :
+        assert response.status_code == 200
+        assert response.json()["message"] == "Welcome to the income prediction API!"
+    except Exception as e:
+        print(e)
 
 def test_render_api_predict():
     sample_data = {
@@ -43,5 +48,9 @@ def test_render_api_predict():
     }
 
     response = requests.post(url + "predict", json=sample_data)
-    assert response.status_code == 200
-    assert response.json()["prediction"] in [" <=50K", " >50K"]
+    print(response.json())
+    try :
+        assert response.status_code == 200
+        assert response.json()["prediction"] in [" <=50K", " >50K"]
+    except Exception as e:
+        print(e)

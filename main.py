@@ -61,14 +61,12 @@ class InputData(BaseModel):
         }
 
 @app.get("/")
-async def root():
+async def welcome():
     return {"message": "Welcome to the income prediction API!"}
 
-@app.get("/docs")  # Explicitly add docs route if needed
-async def get_docs():
-    return app.openapi()
 
-@app.post("/predict")  # Make sure it's exactly "/predict"
+
+@app.post("/predict")
 async def predict(data: InputData):
     """Make predictions with the model"""
     # Convert input to DataFrame

@@ -223,17 +223,24 @@ def compute_slice_metrics(
     return metrics
 
 
-def print_slice_metrics(metrics: Dict[str, Dict[str, Dict[str, float]]]) -> None:
+def print_slice_metrics(metrics: Dict[str, Dict[str, Dict[str, float]]], output_path: str = None) -> None:
     """
-    Pretty print the slice metrics in a readable format.
+    Pretty print the slice metrics in a readable format and save to text file.
     
     Parameters:
     -----------
     metrics : Dict[str, Dict[str, Dict[str, float]]]
         The metrics dictionary returned by compute_slice_metrics
+    output_path : str, optional
+        If provided, path where to save the text file
     """
+    # Create a string to store all output
+    output_text = ""
+    
     for feature, feature_metrics in metrics.items():
-        print(f"\n=== Metrics for {feature} ===")
+        section = f"\n=== Metrics for {feature} ===\n"
+        print(section)
+        output_text += section
         
         # Create a DataFrame for easy viewing
         rows = []
@@ -247,8 +254,16 @@ def print_slice_metrics(metrics: Dict[str, Dict[str, Dict[str, float]]]) -> None
         
         # Format numeric columns
         for col in df_metrics.columns:
-            if col in ['size']:
-                continue
-            df_metrics[col] = df_metrics[col].map('{:.3f}'.format)
-            
-        print(df_metrics)
+            if col != 'size':
+                df_metrics[col] = df_metrics[col].map('{:.3f}'.format)
+        
+        # Convert DataFrame to string and add to output
+        table_string = df_metrics.to_string()
+        print(table_string + "\n")
+        output_text += table_string + "\n\n"
+    
+    # Save to text file if output_path is provided
+    if output_path:
+        with open(output_path, 'w') as f:
+            f.write(output_text)
+        logger.info(f"Slice metrics saved to {output_path}")
