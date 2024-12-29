@@ -22,19 +22,16 @@ The model is trained to be used for predicting salary class based on census data
 
 ## Training Details
 - **Algorithm:** HistGradientBoostingClassifier
-- **Hyperparameters:** ```json
-{
-    "loss": "log_loss",
-    "learning_rate": 0.2,
-    "max_iter": 100,
-    "max_depth": 5,
-    "min_samples_leaf": 10,
-    "max_leaf_nodes": 31,
-    "max_features": 1.0,
-    "l2_regularization": 1.0,
-    "max_bins": 255
-} 
-json``` 
+- **Hyperparameters:**   
+  • "loss": log_loss,
+  • "learning_rate": 0.2,
+  • "max_iter": 100,
+  • "max_depth": 5, 
+  • "min_samples_leaf": 10,
+  • "max_leaf_nodes": 31,
+  • "max_features": 1.0,
+  • "l2_regularization": 1.0,
+  • "max_bins": 255,
 - **Validation Strategy:** 80-20 train-test split with 5-fold stratified cross-validation.
 - **Hyperparameter Tuning:** The hyperparameters were tuned using RandomizedSearchCV with 5-fold stratified cross-validation and only 100 iterations.
 - **Slice Analysis:** It's possible to evaluate also the model performance on different slices of the data. For example for the following features: education, age, occupation, race, sex, and native-country.

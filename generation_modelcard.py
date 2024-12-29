@@ -17,9 +17,9 @@ def save_model_card_as_markdown(model_card, markdown_file_path):
     limitations = "\n".join(f"- {lim}" for lim in model_card["limitations"])
     ethical_considerations = "\n".join(f"- {eth}" for eth in model_card["ethical_considerations"])
 
-    # Format hyperparameters as a JSON code block
-    hyperparameters = json.dumps(model_card['training_details']['hyperparameters'], indent=4)
-    hyperparameters_formatted = f"```json\n{hyperparameters}\n```"
+    # Format hyperparameters as bullet points
+    hyperparameters = "\n".join([f"  • \"{key}\": {value}," for key, value in model_card['training_details']['hyperparameters'].items()])
+
     
     # Create Markdown content
     markdown_content = f"""
@@ -47,7 +47,7 @@ def save_model_card_as_markdown(model_card, markdown_file_path):
 
 ## Training Details
 - **Algorithm:** {model_card['training_details']['algorithm']}
-- **Hyperparameters:** {hyperparameters_formatted}
+- **Hyperparameters:** {hyperparameters}
 - **Validation Strategy:** {model_card['training_details']['validation_strategy']}
 - **Hyperparameter Tuning:** {model_card['training_details']['hyperparameter_tuning']}
 - **Slice Analysis:** {model_card['training_details']['slice_analysis']}
