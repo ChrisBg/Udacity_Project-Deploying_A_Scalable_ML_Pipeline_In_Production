@@ -44,15 +44,15 @@ def save_model_card_as_markdown(model_card, markdown_file_path):
 ## Training Details
 - **Algorithm:** {model_card['training_details']['algorithm']}
 - **Hyperparameters:** 
-    - **loss:** {model_card['training_details']['hyperparameters']['loss']}
-    - **learning_rate:** {model_card['training_details']['hyperparameters']['learning_rate']}
-    - **max_iter:** {model_card['training_details']['hyperparameters']['max_iter']}
-    - **max_depth:** {model_card['training_details']['hyperparameters']['max_depth']}
-    - **min_samples_leaf:** {model_card['training_details']['hyperparameters']['min_samples_leaf']}
-    - **max_leaf_nodes:** {model_card['training_details']['hyperparameters']['max_leaf_nodes']}
-    - **max_features:** {model_card['training_details']['hyperparameters']['max_features']}
-    - **l2_regularization:** {model_card['training_details']['hyperparameters']['l2_regularization']}
-    - **max_bins:** {model_card['training_details']['hyperparameters']['max_bins']}
+    - *loss:* {model_card['training_details']['hyperparameters']['loss']}
+    - *learning_rate:* {model_card['training_details']['hyperparameters']['learning_rate']}
+    - *max_iter:* {model_card['training_details']['hyperparameters']['max_iter']}
+    - *max_depth:* {model_card['training_details']['hyperparameters']['max_depth']}
+    - *min_samples_leaf:* {model_card['training_details']['hyperparameters']['min_samples_leaf']}
+    - *max_leaf_nodes:* {model_card['training_details']['hyperparameters']['max_leaf_nodes']}
+    - *max_features:* {model_card['training_details']['hyperparameters']['max_features']}
+    - *l2_regularization:* {model_card['training_details']['hyperparameters']['l2_regularization']}
+    - *max_bins:* {model_card['training_details']['hyperparameters']['max_bins']}
 - **Validation Strategy:** {model_card['training_details']['validation_strategy']}
 - **Hyperparameter Tuning:** {model_card['training_details']['hyperparameter_tuning']}
 - **Slice Analysis:** {model_card['training_details']['slice_analysis']}
